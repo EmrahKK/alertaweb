@@ -4,9 +4,6 @@ on:
   push:
     tags: [ 'v*' ]
 
-env:
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
 jobs:
   test:
     name: Test
@@ -54,7 +51,7 @@ jobs:
         id: create-release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GTHB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
@@ -64,7 +61,7 @@ jobs:
         id: upload-zip-file
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GTHB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }} 
           asset_path: ./alerta-webui.zip
@@ -74,15 +71,9 @@ jobs:
         id: upload-tarball
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GTHB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }} 
           asset_path: ./alerta-webui.tar.gz
           asset_name: alerta-webui.tar.gz
           asset_content_type: application/gzip
-
-      - uses: act10ns/slack@v2
-        with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-        if: failure()
