@@ -150,6 +150,9 @@ export const tr = {
   GroupDescription: 'Bir veya daha fazla grup seç',
 
   Latest: 'Son',
+  FiveMinutes: '5 dakika',
+  FifteenMinutes: '15 dakika',
+  ThirtyMinutes: '30 dakika',
   Hour: '1 saat',
   SixHours: '6 saat',
   TwelveHours: '12 saat',

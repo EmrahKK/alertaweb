@@ -311,6 +311,9 @@ export default {
     dateRanges() {
       return [
         { text: i18n.t('Latest'), range: [null, null] },
+        { text: i18n.t('FiveMinutes'), range: [-300, null] },
+        { text: i18n.t('FifteenMinutes'), range: [-900, null] },
+        { text: i18n.t('ThirtyMinutes'), range: [-1800, null] },
         { text: i18n.t('Hour'), range: [-3600, null] },
         { text: i18n.t('SixHours'), range: [-3600 * 6, null] },
         { text: i18n.t('TwelveHours'), range: [-3600 * 12, null] },

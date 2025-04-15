@@ -148,6 +148,9 @@ export const fr = {
   GroupDescription: 'Choisissez un ou plusieurs groupes',
 
   Latest: 'Les + récentes',
+  FiveMinutes: '5 minutes',
+  FifteenMinutes: '15 minutes',
+  ThirtyMinutes: '30 minutes',
   Hour: '1 heure',
   SixHours: '6 heures',
   TwelveHours: '12 heures',

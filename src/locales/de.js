@@ -148,6 +148,9 @@ export const de = {
   GroupDescription: 'Wähle einen oder mehrere Gruppen',
 
   Latest: 'Letzte',
+  FiveMinutes: '5 Minuten',
+  FifteenMinutes: '15 Minuten',
+  ThirtyMinutes: '30 Minuten',
   Hour: '1 Stunde',
   SixHours: '6 Stunden',
   TwelveHours: '12 Stunden',
