@@ -1088,7 +1088,8 @@ export default {
           `Last Receive Time: ${lastReceiveTime}\n` +
           `Severity: ${item.severity || 'N/A'}\n` +
           `Event: ${item.event || 'N/A'}\n` +
-          `Resource: ${item.resource || 'N/A'}`
+          `Resource: ${item.resource || 'N/A'}` +
+          `\n\nAlert Link: ${item.href}`
       )
       
       // Return the mailto link with recipients if found
