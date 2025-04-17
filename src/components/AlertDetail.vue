@@ -1084,11 +1084,11 @@ export default {
       
       // Create email body with the required fields
       const body = encodeURIComponent(
-        `Receive Time: ${receiveTime}\n` +
-        `Last Receive Time: ${lastReceiveTime}\n` +
-        `Severity: ${item.severity || 'N/A'}\n` +
-        `Event: ${item.event || 'N/A'}\n` +
-        `Resource: ${item.resource || 'N/A'}`
+          `Receive Time: ${receiveTime}\n` +
+          `Last Receive Time: ${lastReceiveTime}\n` +
+          `Severity: ${item.severity || 'N/A'}\n` +
+          `Event: ${item.event || 'N/A'}\n` +
+          `Resource: ${item.resource || 'N/A'}`
       )
       
       // Return the mailto link with recipients if found
