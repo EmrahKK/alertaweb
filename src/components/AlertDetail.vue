@@ -1082,6 +1082,11 @@ export default {
         ? new Date(item.lastReceiveTime).toLocaleString() 
         : 'N/A'
       
+      // Format alert link
+      const alertLink = item.href 
+        ? item.href.replace('/api/', '/')
+        : 'N/A'
+      
       // Create email body with the required fields
       const body = encodeURIComponent(
         `Receive Time: ${receiveTime}\n` +
@@ -1089,7 +1094,7 @@ export default {
           `Severity: ${item.severity || 'N/A'}\n` +
           `Event: ${item.event || 'N/A'}\n` +
           `Resource: ${item.resource || 'N/A'}` +
-          `\n\nAlert Link: ${item.href}`
+          `\n\nAlert Link: ${alertLink}`
       )
       
       // Return the mailto link with recipients if found
