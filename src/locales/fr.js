@@ -73,6 +73,7 @@ export const fr = {
   Unwatch: 'Unwatch', //'Ne plus surveiller',
   AddNote: 'Add note', //'Ajouter Note',
   Delete: 'Delete', //'Supprimer',
+  Email: 'E-mail',
 
   // Alert actions
   TextIsRequired: 'Text is required',

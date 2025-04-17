@@ -73,6 +73,7 @@ export const de = {
   Unwatch: 'Nicht beobachten',
   AddNote: 'Notiz hinzufügen',
   Delete: 'Löschen',
+  Email: 'E-Mail',
 
   // Alert actions
   TextIsRequired: 'Text ist erforderlich',

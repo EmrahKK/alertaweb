@@ -73,6 +73,7 @@ export const tr = {
   Unwatch: 'İzleme kaldır',
   AddNote: 'Not ekle',
   Delete: 'Sil',
+  Email: 'E-posta',
 
   // Alert actions
   TextIsRequired: 'Metin zorunludur',

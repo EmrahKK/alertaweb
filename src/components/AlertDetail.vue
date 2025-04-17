@@ -191,6 +191,22 @@
         </v-tooltip>
 
         <v-tooltip bottom>
+          <v-btn
+            slot="activator"
+            icon
+            class="btn--plain px-1 mx-0"
+            :href="getMailtoLink(item)"
+          >
+            <v-icon
+              size="20px"
+            >
+              email
+            </v-icon>
+          </v-btn>
+          <span>{{ $t('Email') }}</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
           <v-menu
             slot="activator"
             bottom
@@ -1038,6 +1054,45 @@ export default {
       setTimeout(() => {
         this.copyIconText = i18n.t('Copy')
       }, 2000)
+    },
+    getMailtoLink(item) {
+      // Extract email addresses from the Text field if available
+      let recipients = ''
+      if (item.text) {
+        // Regular expression to find email addresses in the text
+        const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g
+        const emails = item.text.match(emailRegex)
+        
+        if (emails && emails.length > 0) {
+          // Join multiple emails with commas if found
+          recipients = emails.join(',')
+        }
+      }
+      
+      // Create email subject from the Value field
+      const subject = encodeURIComponent(item.value || 'Alert Notification')
+      
+      // Format receive time
+      const receiveTime = item.receiveTime 
+        ? new Date(item.receiveTime).toLocaleString() 
+        : 'N/A'
+      
+      // Format last receive time
+      const lastReceiveTime = item.lastReceiveTime 
+        ? new Date(item.lastReceiveTime).toLocaleString() 
+        : 'N/A'
+      
+      // Create email body with the required fields
+      const body = encodeURIComponent(
+        `Receive Time: ${receiveTime}\n` +
+        `Last Receive Time: ${lastReceiveTime}\n` +
+        `Severity: ${item.severity || 'N/A'}\n` +
+        `Event: ${item.event || 'N/A'}\n` +
+        `Resource: ${item.resource || 'N/A'}`
+      )
+      
+      // Return the mailto link with recipients if found
+      return `mailto:${recipients}?subject=${subject}&body=${body}`
     }
   }
 }
