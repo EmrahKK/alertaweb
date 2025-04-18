@@ -1065,7 +1065,7 @@ export default {
         
         if (emails && emails.length > 0) {
           // Join multiple emails with commas if found
-          recipients = emails.join(',')
+          recipients = emails.join(';')
         }
       }
       
