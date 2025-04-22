@@ -286,6 +286,20 @@
             slot="activator"
             icon
             class="btn--plain"
+            :href="getMultipleAlertsMailtoLink(selected)"
+          >
+            <v-icon>
+              email
+            </v-icon>
+          </v-btn>
+          <span>{{ $t('Email') }}</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <v-btn
+            slot="activator"
+            icon
+            class="btn--plain"
             @click="toggleWatch()"
           >
             <v-icon>
@@ -827,6 +841,70 @@ export default {
       setTimeout(() => {
         this.$store.dispatch('set', ['refresh', false])
       }, 300)
+    },
+    getMultipleAlertsMailtoLink(alerts) {
+      // Set default recipient and cc
+      const cc = 'AhyAltyapiOperasyonlari@burgan.com.tr'
+      
+      // Extract email addresses from the Text fields of all alerts
+      let recipients = []
+      alerts.forEach(alert => {
+        if (alert.text) {
+          // Regular expression to find email addresses in the text
+          const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g
+          const emails = alert.text.match(emailRegex)
+          
+          if (emails && emails.length > 0) {
+            // Add unique email addresses to recipients
+            emails.forEach(email => {
+              if (!recipients.includes(email)) {
+                recipients.push(email)
+              }
+            })
+          }
+        }
+      })
+      
+      // Join recipients with commas if found
+      const to = recipients.join(',')
+      
+      // Create email subject
+      const subject = encodeURIComponent(`Alert Notification: ${alerts.length} alerts`)
+      
+      // Create email body with details from all alerts
+      let bodyContent = `Alert notification for ${alerts.length} alerts:\n\n`
+      
+      alerts.forEach((alert, index) => {
+        // Format receive time
+        const receiveTime = alert.receiveTime 
+          ? new Date(alert.receiveTime).toLocaleString() 
+          : 'N/A'
+        
+        // Format last receive time
+        const lastReceiveTime = alert.lastReceiveTime 
+          ? new Date(alert.lastReceiveTime).toLocaleString() 
+          : 'N/A'
+        
+        bodyContent += `ALERT #${index + 1}\n`
+        bodyContent += `Value: ${alert.value || 'N/A'}\n`
+        bodyContent += `Receive Time: ${receiveTime}\n`
+        bodyContent += `Last Receive Time: ${lastReceiveTime}\n`
+        bodyContent += `Severity: ${alert.severity || 'N/A'}\n`
+        bodyContent += `Event: ${alert.event || 'N/A'}\n`
+        bodyContent += `Resource: ${alert.resource || 'N/A'}\n`
+        
+        // Add alert link if available
+        if (alert.href) {
+          bodyContent += `Alert Link: ${alert.href}\n`
+        }
+        
+        bodyContent += `\n`
+      })
+      
+      const body = encodeURIComponent(bodyContent)
+      
+      // Return the mailto link with recipients and CC
+      return `mailto:${to}?cc=${cc}&subject=${subject}&body=${body}`
     }
   }
 }

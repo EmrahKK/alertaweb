@@ -1056,6 +1056,9 @@ export default {
       }, 2000)
     },
     getMailtoLink(item) {
+      // Set default recipient and cc
+      const cc = 'AhyAltyapiOperasyonlari@burgan.com.tr'
+      
       // Extract email addresses from the Text field if available
       let recipients = ''
       if (item.text) {
@@ -1098,7 +1101,7 @@ export default {
       )
       
       // Return the mailto link with recipients if found
-      return `mailto:${recipients}?subject=${subject}&body=${body}`
+      return `mailto:${recipients}?cc=${cc}subject=${subject}&body=${body}`
     }
   }
 }
