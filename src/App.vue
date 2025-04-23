@@ -898,7 +898,7 @@ export default {
           bodyContent += `Alert Link: ${alert.href}\n`
         }
         
-        bodyContent += `\n`
+        bodyContent += ` \n`
       })
       
       const body = encodeURIComponent(bodyContent)
