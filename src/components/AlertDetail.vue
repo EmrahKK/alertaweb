@@ -1102,7 +1102,7 @@ export default {
       )
       
       // Return the mailto link with recipients if found
-      return `mailto:${recipients}?cc=${cc}subject=${sbjct}&body=${body}`
+      return `mailto:${recipients}?cc=${cc}&subject=${sbjct}&body=${body}`
     }
   }
 }
