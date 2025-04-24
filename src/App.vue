@@ -846,13 +846,13 @@ export default {
       // Set default recipient and cc
       const cc = 'AhyAltyapiOperasyonlari@burgan.com.tr'
       
-      // Extract email addresses from the Text fields of all alerts
+      // Extract email addresses from the value fields of all alerts
       let recipients = []
       alerts.forEach(alert => {
-        if (alert.text) {
-          // Regular expression to find email addresses in the text
+        if (alert.value) {
+          // Regular expression to find email addresses in the value
           const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g
-          const emails = alert.text.match(emailRegex)
+          const emails = alert.value.match(emailRegex)
           
           if (emails && emails.length > 0) {
             // Add unique email addresses to recipients

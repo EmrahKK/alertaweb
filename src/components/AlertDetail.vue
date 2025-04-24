@@ -1059,12 +1059,12 @@ export default {
       // Set default recipient and cc
       const cc = 'AhyAltyapiOperasyonlari@burgan.com.tr'
       
-      // Extract email addresses from the Text field if available
+      // Extract email addresses from the value field if available
       let recipients = ''
-      if (item.text) {
-        // Regular expression to find email addresses in the text
+      if (item.value) {
+        // Regular expression to find email addresses in the value
         const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g
-        const emails = item.text.match(emailRegex)
+        const emails = item.value.match(emailRegex)
         
         if (emails && emails.length > 0) {
           // Join multiple emails with commas if found
@@ -1072,8 +1072,8 @@ export default {
         }
       }
       
-      // Create email subject from the Value field
-      const subject = encodeURIComponent(item.value || 'Alert Notification')
+      // Create email subject from the Type field
+      const subject = encodeURIComponent(item.type || 'Alert Notification')
       
       // Format receive time
       const receiveTime = item.receiveTime 
