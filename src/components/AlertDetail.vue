@@ -1073,7 +1073,7 @@ export default {
       }
       
       // Create email subject from the Type field
-      const subject = encodeURIComponent('Alert Notification')
+      const sbjct = encodeURIComponent(item.type || 'Alert Notification')
       
       // Format receive time
       const receiveTime = item.receiveTime 
@@ -1093,7 +1093,7 @@ export default {
       // Create email body with the required fields
       const body = encodeURIComponent(
         `Receive Time: ${receiveTime}\n` +
-          `Type: ${alert.type}\n` +
+          `Type: ${item.type}\n` +
           `Last Receive Time: ${lastReceiveTime}\n` +
           `Severity: ${item.severity || 'N/A'}\n` +
           `Event: ${item.event || 'N/A'}\n` +
@@ -1102,7 +1102,7 @@ export default {
       )
       
       // Return the mailto link with recipients if found
-      return `mailto:${recipients}?cc=${cc}subject=${subject}&body=${body}`
+      return `mailto:${recipients}?cc=${cc}subject=${sbjct}&body=${body}`
     }
   }
 }
