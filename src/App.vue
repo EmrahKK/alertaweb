@@ -885,6 +885,7 @@ export default {
           ? new Date(alert.lastReceiveTime).toLocaleString() 
           : 'N/A'
         
+        
         bodyContent += `ALERT #${index + 1}\n`
         bodyContent += `Receive Time: ${receiveTime}\n`
         bodyContent += `Last Receive Time: ${lastReceiveTime}\n`
