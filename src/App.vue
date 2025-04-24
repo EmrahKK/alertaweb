@@ -895,10 +895,8 @@ export default {
         
         // Add alert link if available
         if (alert.href) {
-          bodyContent += `Alert Link: ${alert.href}\n`
+          bodyContent += `Alert Link: ${alert.href}\n\n`
         }
-        
-        bodyContent += ` \n`
       })
       
       const body = encodeURIComponent(bodyContent)
