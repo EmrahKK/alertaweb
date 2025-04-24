@@ -310,7 +310,7 @@ export default {
   computed: {
     dateRanges() {
       return [
-        { text: i18n.t('Latest'), range: [null, null] },
+        { text: i18n.t('Latest'), range: [-300, null] },
         { text: i18n.t('FiveMinutes'), range: [-300, null] },
         { text: i18n.t('FifteenMinutes'), range: [-900, null] },
         { text: i18n.t('ThirtyMinutes'), range: [-1800, null] },
