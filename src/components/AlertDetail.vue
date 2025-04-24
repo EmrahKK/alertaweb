@@ -1073,7 +1073,7 @@ export default {
       }
       
       // Create email subject from the Type field
-      const subject = encodeURIComponent(`Alert Notification`)
+      const subject = encodeURIComponent('Alert Notification')
       
       // Format receive time
       const receiveTime = item.receiveTime 
