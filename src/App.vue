@@ -886,7 +886,6 @@ export default {
           : 'N/A'
         
         bodyContent += `ALERT #${index + 1}\n`
-        bodyContent += `Value: ${alert.value || 'N/A'}\n`
         bodyContent += `Receive Time: ${receiveTime}\n`
         bodyContent += `Last Receive Time: ${lastReceiveTime}\n`
         bodyContent += `Severity: ${alert.severity || 'N/A'}\n`
