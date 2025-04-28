@@ -866,7 +866,7 @@ export default {
       })
       
       // Join recipients with commas if found
-      const to = recipients.join(',')
+      const to = recipients.join(';')
       
       // Create email subject
       const subject = encodeURIComponent(`Alert Notification: ${alerts.length} alerts`)
