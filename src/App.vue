@@ -895,9 +895,9 @@ export default {
         bodyContent += `Resource: ${alert.resource || 'N/A'}\n`
         
         // Add alert link if available
-        if (alert.href) {
-          bodyContent += `Alert Link: ${alert.href}\n\n`
-        }
+        const alertLink = alert.href ? alert.href.replace('/api/', '/') : 'N/A'
+        bodyContent += `Alert Link: ${alertLink}\n\n`
+
       })
       
       const body = encodeURIComponent(bodyContent)
