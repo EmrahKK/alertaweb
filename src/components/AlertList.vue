@@ -123,7 +123,7 @@
                     <v-icon
                       v-bind="attrs"
                       small
-                      color="red"
+                      color="yellow"
                       v-on="on"
                     >whatshot</v-icon>
                   </template>
