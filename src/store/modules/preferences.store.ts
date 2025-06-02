@@ -23,8 +23,8 @@ const getDefaults = () => {
       'font-weight': null
     },
     rowsPerPage: 20,
-    valueWidth: 50, // px
-    textWidth: 400, // px
+    valueWidth: 200, // px
+    textWidth: 900, // px
     refreshInterval: 5 * 1000, // milliseconds
     ackTimeout: null,
     shelveTimeout: null,
